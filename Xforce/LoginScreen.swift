@@ -83,7 +83,6 @@ class LoginScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Recuperar a senha?", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        //button.setTitleColor(UIColor(named: "e730d6"), for: .normal)
         button.setTitleColor(UIColor(red: 6/255, green: 153/255, blue: 94/255, alpha: 1.0) /* #e730d6 */, for: .normal)
         return button
        }()
@@ -100,16 +99,6 @@ class LoginScreen: UIView {
         return button
     }()
     
-//    lazy var subLoginView: UIImageView = {
-//           let image = UIImageView()
-//           image.translatesAutoresizingMaskIntoConstraints = false
-//           image.image = UIImage(named: "background-pink")
-//           image.contentMode = .scaleToFill
-//           image.clipsToBounds = true
-//           image.layer.cornerRadius = 8
-//           return image
-//       }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.subImageView)
