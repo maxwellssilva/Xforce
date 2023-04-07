@@ -1,10 +1,7 @@
 //
 //  LoginScreen.swift
-//  Xforce
-//
 //  Created by Maxwell da Silva e Silva on 19/03/23.
 //
-
 import UIKit
 
 class LoginScreen: UIView {
@@ -38,7 +35,7 @@ class LoginScreen: UIView {
         label.textColor = .lightGray
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "Perfil sobre um dev sonhador"
+        label.text = "Vem ser um dev fora da curva"
         return label
     }()
     
@@ -67,7 +64,8 @@ class LoginScreen: UIView {
         txt.autocorrectionType = .no
         txt.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
         txt.borderStyle = .roundedRect
-        txt.keyboardType = .alphabet
+        txt.keyboardType = .default
+        txt.isSecureTextEntry = true
         txt.attributedPlaceholder = NSAttributedString(
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
@@ -76,6 +74,22 @@ class LoginScreen: UIView {
         txt.layer.borderColor = UIColor.lightGray.cgColor
         txt.layer.borderWidth = 1.0
         return txt
+    }()
+    
+    lazy var recoverPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Recuperar a senha?", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        //button.setTitleColor(UIColor(named: "e730d6"), for: .normal)
+        button.setTitleColor(UIColor(red: 6/255, green: 153/255, blue: 94/255, alpha: 1.0) /* #e730d6 */, for: .normal)
+        return button
+    }()
+    
+    lazy var subLoginView: UIImageView = {
+        let image = UIImageView()
+        
+        return image
     }()
 
     override init(frame: CGRect) {
@@ -86,6 +100,7 @@ class LoginScreen: UIView {
         self.addSubview(self.descriptionLabel)
         self.addSubview(self.loginTextField)
         self.addSubview(self.passwordTextField)
+        self.addSubview(self.recoverPasswordButton)
         self.configConstraints()
     }
     
@@ -115,10 +130,16 @@ class LoginScreen: UIView {
             self.loginTextField.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 40),
             self.loginTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.loginTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.loginTextField.heightAnchor.constraint(equalToConstant: 30),
             
             self.passwordTextField.topAnchor.constraint(equalTo: self.loginTextField.bottomAnchor, constant: 15),
             self.passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.passwordTextField.heightAnchor.constraint(equalToConstant: 30),
+            
+            self.recoverPasswordButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor, constant: 8),
+            self.recoverPasswordButton.trailingAnchor.constraint(equalTo: self.loginTextField.trailingAnchor),
+            self.recoverPasswordButton.heightAnchor.constraint(equalToConstant: 15),
         ])
     }
     
